@@ -20,8 +20,8 @@ intp_factor = 1;  % interpolation factor in lateral and elevational directions
 % rfDSEA16HO0
 %seq_folder= 'Canine';
 %seq_folder_sub = 'originaldata';
-%disease_name = BL_disease_name;
-disease_name = HO_disease_name;
+disease_name = BL_disease_name;
+%disease_name = HO_disease_name;
 base_name ='rfDSEA16HO0'
 seq_id = 'rfDSEA16HO0';   % The folder name and the filename
 N_file_index = 31;         % Number of files in the fholder
@@ -170,11 +170,11 @@ for ele_slice = 8:48
   
   gray_data = (gray_data > 0).*gray_data;
   gray_data_ds = gray_data ;
-  imagename = [seq_id '_frame' num2str(ff) '_ele' num2str(ele_slice) '.png'];
+  imagename = ['Output_data\' seq_id '_frame' num2str(ff) '_ele' num2str(ele_slice) '.png'];
   imwrite(gray_data_ds , gray(256),imagename)  
   
-  save_name = [disease_name '_bmode' '_frame' num2str(ff) '_ele' num2str(ele_slice)];
-  save(save_name)
+  save_name = ['Output_data\' disease_name '_bmode' '_frame' num2str(ff) '_ele' num2str(ele_slice)];
+  save(save_name,'gray_data')
 
   
   %% Segmentation 
