@@ -20,7 +20,8 @@ intp_factor = 1;  % interpolation factor in lateral and elevational directions
 % rfDSEA16HO0
 %seq_folder= 'Canine';
 %seq_folder_sub = 'originaldata';
-disease_name = BL_disease_name;
+%disease_name = BL_disease_name;
+disease_name = HO_disease_name;
 base_name ='rfDSEA16HO0'
 seq_id = 'rfDSEA16HO0';   % The folder name and the filename
 N_file_index = 31;         % Number of files in the fholder
@@ -172,23 +173,23 @@ for ele_slice = 8:48
   imagename = [seq_id '_frame' num2str(ff) '_ele' num2str(ele_slice) '.png'];
   imwrite(gray_data_ds , gray(256),imagename)  
   
-  
-  save('HO_bmode','gray_data')
+  save_name = [disease_name '_bmode' '_frame' num2str(ff) '_ele' num2str(ele_slice)];
+  save(save_name)
 
   
   %% Segmentation 
-  mask1 = roipoly;
-  mask2 = roipoly;
-  mask3 = abs(mask1 - mask2);
+%   mask1 = roipoly;
+%   mask2 = roipoly;
+%   mask3 = abs(mask1 - mask2);
    % mask3 = roipoly;
   
   
-  mask = mask3(1:axial_range,1:20:end);
-  centroid = regionprops(true(size(mask)), mask,  'WeightedCentroid');
-  
-  %save file 
-  savefilename = [ Msk_dir disease_name 'maskSAX_ele' num2str(ele_slice) '_' num2str(ff) '.mat']
-  save(savefilename,'mask', 'centroid') 
+%   mask = mask3(1:axial_range,1:20:end);
+%   centroid = regionprops(true(size(mask)), mask,  'WeightedCentroid');
+%   
+%   %save file 
+%   savefilename = [ Msk_dir disease_name 'maskSAX_ele' num2str(ele_slice) '_' num2str(ff) '.mat']
+%   save(savefilename,'mask', 'centroid') 
   
 %   mask_tmp = mask3(filt_c+1:end-filt_c,filt_r+1:end-filt_r);
 %   mask3 = mask_tmp;
