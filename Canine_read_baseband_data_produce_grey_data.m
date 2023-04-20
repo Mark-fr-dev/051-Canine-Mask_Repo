@@ -64,7 +64,7 @@ dphid       = min(diff(PhiDegs));
 
 % ele_slic is ROI ele slice 
 %ele_slice = 1;
-make_mask = 1; %If zero skip mask section
+make_mask = 0; %If zero skip mask section
 
 if disease_name == HO_disease_name
     axi_s = 500; axi_end = 2360;
@@ -82,8 +82,8 @@ end
 
 
 
-for ele_slice = 11:22
-    for ff = 1
+for ele_slice = 8:48
+    for ff = 1:3
     
       rfdata_dir = ['D:\Canine_Data\canine_data\' seq_id  '_sigbb'];
       %%% load pre-deformation data 
