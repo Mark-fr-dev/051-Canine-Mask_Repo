@@ -28,11 +28,11 @@ title(['BL Bmode fr' num2str(frame_num) ' ele' num2str(ele_num)])
 strat_a=120; end_a = 1458;
 strat_l=13; end_l = 51;
 
+filtered_gray = medfilt2(gray_data,[34 7]);
 mask =zeros(Na,Nl);
-TH = 40;  %B-Mode threshold brightness value 0-255
-
-TH_index = (gray_data>TH);
-%filtered_gray = medfilt2(gray_data,[32 5]);
+TH = 35;  %B-Mode threshold brightness value 0-255
+% TH_index = (gray_data>TH);
+TH_index = (filtered_gray>TH);
 mask(TH_index)=1;
 
 %Ignore image outside this rectangular ROI
@@ -50,20 +50,19 @@ title(['Mask BL Bmode fr' num2str(frame_num) ' ele' num2str(ele_num) ' TH' ...
     num2str(TH)])
 
 
-
-BW1 = edge(mask,'sobel');
-BW2 = edge(mask,'canny');
-
-
-figure(2)
-tiledlayout(1,2)
-
-nexttile
-imagesc(BW1)
-title('Sobel Filter')
-
-nexttile
-imagesc(BW2)
-title('Canny Filter')
+% Edge detection
+% BW1 = edge(mask,'sobel');
+% BW2 = edge(mask,'canny');
+% 
+% figure(2)
+% tiledlayout(1,2)
+% 
+% nexttile
+% imagesc(BW1)
+% title('Sobel Filter')
+% 
+% nexttile
+% imagesc(BW2)
+% title('Canny Filter')
 
 
