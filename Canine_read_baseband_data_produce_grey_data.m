@@ -20,15 +20,15 @@ intp_factor = 1;  % interpolation factor in lateral and elevational directions
 % rfDSEA16HO0
 %seq_folder= 'Canine';
 %seq_folder_sub = 'originaldata';
-base_name ='rfDSEA16HO0';
-disease_name = HO_disease_name;
+base_name ='rfDSEA16BL0';
+disease_name = BL_disease_name;
 N_file_index = 31;         % Number of files in the fholder
 %rf_folder = ['D:\Canine_Data\canine_data\' seq_id   '\'  seq_folder_sub];
 
 %%%% Extract one of the raw data to know the imaging parameters
 % seq_folder_sub = 'originaldata';
 % rf_folder = ['F:\Research\SpeckleTracking\Canine\' seq_folder '\' base_name '\' seq_folder_sub];
-rf_fname = ['D:\Canine_Data\canine_data\rfDSEA16HO0\originaldata\' base_name num2str(1) '.mat'];
+rf_fname = ['D:\Canine_Data\canine_data\rfDSEA16BL0\originaldata\' base_name num2str(1) '.mat'];
 load(rf_fname);
 
 c           = 1.54;     % [mm/us]
@@ -82,8 +82,8 @@ end
 
 
 
-for ele_slice = 8:48
-    for ff = 1:3
+for ele_slice = 8
+    for ff = 1
     
       rfdata_dir = ['D:\Canine_Data\canine_data\' seq_id  '_sigbb'];
       %%% load pre-deformation data 
