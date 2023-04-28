@@ -9,7 +9,7 @@ frame_num = 1;
 ele_num=23;
 
 vid_file = sprintf('B_mode_brightness_masks_%s.avi', datestr(now, 'yyyy-mm-dd_HHMMSS'));
-video_flag=1;
+video_flag=0;
 if(video_flag==1)
     vv= VideoWriter(vid_file);
     vv.FrameRate=2;
@@ -22,7 +22,7 @@ load(file_name)
 
 [Na, Nl]=size(gray_data);
 
-for TH=20:50
+for TH=30%20:50
 
 %Display B-Mode image
 figure(1);
@@ -36,7 +36,7 @@ title(['BL Bmode fr' num2str(frame_num) ' ele' num2str(ele_num)])
 
 %Manually selected ROI
 strat_a=120; end_a = 1458;
-strat_l=13; end_l = 51;
+strat_l=3; end_l = 60;
 
 filtered_gray = medfilt2(gray_data,[34 7]);
 mask =zeros(Na,Nl);
